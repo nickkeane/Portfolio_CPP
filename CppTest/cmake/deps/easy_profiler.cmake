@@ -1,0 +1,17 @@
+# TODO: cmake --install easy_profiler
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    set(easy_profiler_DIR "D:/API/CPP/MinGW/easy_profiler")
+else()
+    set(easy_profiler_DIR "D:/API/CPP/Win64/easy_profiler")
+endif()
+# Include easy_profiler Libraries
+find_library(easy_profiler_LIBS NAMES easy_profiler PATHS ${easy_profiler_DIR} PATH_SUFFIXES lib local/lib)
+if (easy_profiler_LIBS)
+    set(easy_profiler_FOUND true)
+    set(easy_profiler_INCLUDE ${easy_profiler_DIR}/include)
+    message(STATUS "Found: easy_profiler")
+    message(STATUS "\t${easy_profiler_INCLUDE}")    
+    message(STATUS "\t${easy_profiler_LIBS}")
+else()
+    message(FATAL_ERROR "Not Found: easy_profiler")
+endif()
